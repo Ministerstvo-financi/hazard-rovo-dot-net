@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://hazard.mfcr.cz/rovo/v1" name="AisgPort" targetNamespace="http://hazard.mfcr.cz/rovo/v1" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:tns="http://hazard.mfcr.cz/rovo/v1" elementFormDefault="qualified" targetNamespace="http://hazard.mfcr.cz/rovo/v1" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="ErrorMessage" type="tns:ErrorMessageType" />
+      <xs:element name="OveritOsobuRequest">
+        <xs:complexType>
+          <xs:complexContent mixed="false">
+            <xs:extension base="tns:BaseRequestType">
+              <xs:sequence>
+                <xs:element name="Duvod" type="xs:string" />
+                <xs:element minOccurs="0" name="HID" type="xs:string" />
+                <xs:element minOccurs="0" name="Osoba" type="tns:OsobaType" />
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="OveritOsobuResponse">
+        <xs:complexType>
+          <xs:complexContent mixed="false">
+            <xs:extension base="tns:BaseResponseType">
+              <xs:sequence>
+                <xs:element minOccurs="0" name="HID" type="xs:string" />
+                <xs:element name="Plnoleta" type="xs:string" />
+                <xs:element name="NalezenaROB" type="xs:string" />
+                <xs:element name="NalezenaRVO" type="xs:string" />
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="OveritOsobyHromadneRequest">
+        <xs:complexType>
+          <xs:complexContent mixed="false">
+            <xs:extension base="tns:BaseRequestType">
+              <xs:sequence>
+                <xs:element name="Osoby" type="tns:OsobyType" />
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="OveritOsobyHromadneResponse">
+        <xs:complexType>
+          <xs:complexContent mixed="false">
+            <xs:extension base="tns:BaseResponseType">
+              <xs:sequence>
+                <xs:element name="CisloDavky" type="xs:string" />
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TestRequest" type="tns:BaseRequestType" />
+      <xs:element name="TestResponse" type="tns:BaseResponseType" />
+      <xs:element name="ZiskatVysledkyOveritOsobyHromadneRequest">
+        <xs:complexType>
+          <xs:complexContent mixed="false">
+            <xs:extension base="tns:BaseRequestType">
+              <xs:sequence>
+                <xs:element name="CisloDavky" type="xs:string" />
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ZiskatVysledkyOveritOsobyHromadneResponse">
+        <xs:complexType>
+          <xs:complexContent mixed="false">
+            <xs:extension base="tns:BaseResponseType">
+              <xs:sequence>
+                <xs:element name="Stav" type="xs:string" />
+                <xs:element name="Osoby" type="tns:OsobaKOvereniVysledekType" />
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ZmenitUdajeOsobyRequest">
+        <xs:complexType>
+          <xs:complexContent mixed="false">
+            <xs:extension base="tns:BaseRequestType">
+              <xs:sequence>
+                <xs:element name="HID" type="xs:string" />
+                <xs:element name="Osoba" type="tns:OsobaType" />
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ZmenitUdajeOsobyResponse" type="tns:BaseResponseType" />
+      <xs:complexType name="BaseRequestType">
+        <xs:sequence>
+          <xs:element name="CisloPozadavku" type="xs:string" />
+          <xs:element minOccurs="0" name="ICO_VCP" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OsobaType">
+        <xs:sequence>
+          <xs:element name="Jmeno" type="xs:string" />
+          <xs:element name="Prijmeni" type="xs:string" />
+          <xs:element minOccurs="0" name="RodnePrijmeni" type="xs:string" />
+          <xs:element name="DatumNarozeni" type="xs:date" />
+          <xs:element name="StatniObcanstvi" type="xs:string" />
+          <xs:element minOccurs="0" name="MistoNarozeni" type="tns:MistoNarozeniType" />
+          <xs:element minOccurs="0" name="TrvalyPobyt" type="tns:TrvalyPobytType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MistoNarozeniType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MistoNarozeniKod" type="xs:int" />
+          <xs:element minOccurs="0" name="MistoNarozeniCR" type="tns:MistoNarozeniCRType" />
+          <xs:element minOccurs="0" name="MistoNarozeniSvet" type="tns:MistoNarozeniSvetType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MistoNarozeniCRType">
+        <xs:sequence>
+          <xs:element name="Obec" type="xs:string" />
+          <xs:element name="Okres" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="MistoNarozeniSvetType">
+        <xs:sequence>
+          <xs:element name="Misto" type="xs:string" />
+          <xs:element name="Stat" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TrvalyPobytType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TrvalyPobytKod" type="xs:int" />
+          <xs:element minOccurs="0" name="TrvalyPobytCR" type="tns:TrvalyPobytCRType" />
+          <xs:element minOccurs="0" name="TrvalyPobytSvet" type="tns:TrvalyPobytSvetType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TrvalyPobytCRType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Ulice" type="xs:string" />
+          <xs:element minOccurs="0" name="CisloPopisneEvidencni" type="xs:positiveInteger" />
+          <xs:element minOccurs="0" name="CisloOrientacni" type="xs:positiveInteger" />
+          <xs:element minOccurs="0" name="CisloOrientacniDodatek" type="xs:string" />
+          <xs:element minOccurs="0" name="CisloObvodMestaPrahy" type="xs:positiveInteger" />
+          <xs:element minOccurs="0" name="ObecCast" type="xs:string" />
+          <xs:element name="Obec" type="xs:string" />
+          <xs:element name="PSC" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="TrvalyPobytSvetType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Ulice" type="xs:string" />
+          <xs:element minOccurs="0" name="CisloPopisneEvidencni" type="xs:positiveInteger" />
+          <xs:element minOccurs="0" name="CisloOrientacni" type="xs:positiveInteger" />
+          <xs:element minOccurs="0" name="CisloOrientacniDodatek" type="xs:string" />
+          <xs:element minOccurs="0" name="ObecCast" type="xs:string" />
+          <xs:element name="Obec" type="xs:string" />
+          <xs:element minOccurs="0" name="PSC" type="xs:string" />
+          <xs:element name="Stat" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OsobyType">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" name="OsobaKOvereni" type="tns:OsobaKOvereniType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OsobaKOvereniType">
+        <xs:sequence>
+          <xs:element name="IdentifikaceZaznamu" type="xs:string" />
+          <xs:element name="Osoba" type="tns:OsobaType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BaseResponseType">
+        <xs:sequence>
+          <xs:element name="CisloPozadavku" type="xs:string" />
+          <xs:element name="IdentifikacePozadavku" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OsobaKOvereniVysledekType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="OsobaKOvereniVysledek">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="IdentifikaceZaznamu" type="xs:string" />
+                <xs:element minOccurs="0" name="HID" type="xs:string" />
+                <xs:element name="Plnoleta" type="xs:string" />
+                <xs:element name="NalezenaROB" type="xs:string" />
+                <xs:element name="NalezenaRVO" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ErrorMessageType">
+        <xs:sequence>
+          <xs:element name="Kod" type="xs:int" />
+          <xs:element minOccurs="0" name="Popis" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="DuvodZadostiType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Registrace" />
+          <xs:enumeration value="Vstup" />
+          <xs:enumeration value="Prihlaseni" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="StavZpracovaniDavkyType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Prijata" />
+          <xs:enumeration value="Zpracovana" />
+          <xs:enumeration value="Ukoncena" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="VysledekKontrolyPlnoletostiType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ANO" />
+          <xs:enumeration value="NE" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="VysledekKontrolyROBType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="NALEZENA" />
+          <xs:enumeration value="MRTVA" />
+          <xs:enumeration value="NENALEZENA" />
+          <xs:enumeration value="DUPLICITA" />
+          <xs:enumeration value="NEODPOVEZENO" />
+          <xs:enumeration value="NEPROVEDENA" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="VysledekKontrolyRVOType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="ANO" />
+          <xs:enumeration value="NE" />
+          <xs:enumeration value="NEOVERENO" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ZmenitUdajeOsoby">
+    <wsdl:part name="ZmenitUdajeOsobyRequest" element="ns1:ZmenitUdajeOsobyRequest" />
+  </wsdl:message>
+  <wsdl:message name="OveritOsobyHromadne">
+    <wsdl:part name="OveritOsobyHromadneRequest" element="ns1:OveritOsobyHromadneRequest" />
+  </wsdl:message>
+  <wsdl:message name="OveritOsobuResponse">
+    <wsdl:part name="OveritOsobuResponse" element="ns1:OveritOsobuResponse" />
+  </wsdl:message>
+  <wsdl:message name="Test">
+    <wsdl:part name="TestRequest" element="ns1:TestRequest" />
+  </wsdl:message>
+  <wsdl:message name="TestResponse">
+    <wsdl:part name="TestResponse" element="ns1:TestResponse" />
+  </wsdl:message>
+  <wsdl:message name="OveritOsobyHromadneResponse">
+    <wsdl:part name="OveritOsobyHromadneResponse" element="ns1:OveritOsobyHromadneResponse" />
+  </wsdl:message>
+  <wsdl:message name="ErrorMessage">
+    <wsdl:part name="ErrorMessage" element="ns1:ErrorMessage" />
+  </wsdl:message>
+  <wsdl:message name="ZiskatVysledkyOveritOsobyHromadne">
+    <wsdl:part name="ZiskatVysledkyOveritOsobyHromadneRequest" element="ns1:ZiskatVysledkyOveritOsobyHromadneRequest" />
+  </wsdl:message>
+  <wsdl:message name="OveritOsobu">
+    <wsdl:part name="OveritOsobuRequest" element="ns1:OveritOsobuRequest" />
+  </wsdl:message>
+  <wsdl:message name="ZmenitUdajeOsobyResponse">
+    <wsdl:part name="ZmenitUdajeOsobyResponse" element="ns1:ZmenitUdajeOsobyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ZiskatVysledkyOveritOsobyHromadneResponse">
+    <wsdl:part name="ZiskatVysledkyOveritOsobyHromadneResponse" element="ns1:ZiskatVysledkyOveritOsobyHromadneResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AisgPort">
+    <wsdl:operation name="ZmenitUdajeOsoby">
+      <wsdl:input name="ZmenitUdajeOsoby" message="ns1:ZmenitUdajeOsoby" />
+      <wsdl:output name="ZmenitUdajeOsobyResponse" message="ns1:ZmenitUdajeOsobyResponse" />
+      <wsdl:fault name="ErrorMessage" message="ns1:ErrorMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OveritOsobyHromadne">
+      <wsdl:input name="OveritOsobyHromadne" message="ns1:OveritOsobyHromadne" />
+      <wsdl:output name="OveritOsobyHromadneResponse" message="ns1:OveritOsobyHromadneResponse" />
+      <wsdl:fault name="ErrorMessage" message="ns1:ErrorMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ZiskatVysledkyOveritOsobyHromadne">
+      <wsdl:input name="ZiskatVysledkyOveritOsobyHromadne" message="ns1:ZiskatVysledkyOveritOsobyHromadne" />
+      <wsdl:output name="ZiskatVysledkyOveritOsobyHromadneResponse" message="ns1:ZiskatVysledkyOveritOsobyHromadneResponse" />
+      <wsdl:fault name="ErrorMessage" message="ns1:ErrorMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OveritOsobu">
+      <wsdl:input name="OveritOsobu" message="ns1:OveritOsobu" />
+      <wsdl:output name="OveritOsobuResponse" message="ns1:OveritOsobuResponse" />
+      <wsdl:fault name="ErrorMessage" message="ns1:ErrorMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Test">
+      <wsdl:input name="Test" message="ns1:Test" />
+      <wsdl:output name="TestResponse" message="ns1:TestResponse" />
+      <wsdl:fault name="ErrorMessage" message="ns1:ErrorMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://wsdl.rovo.aisg.cca.cz/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://hazard.mfcr.cz/rovo/v1" name="AisgPortImplService" targetNamespace="http://wsdl.rovo.aisg.cca.cz/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://hazard.mfcr.cz/rovo/v1" location="https://aisgsprtst01.cca.cz:9401/rovo/v1?wsdl=AisgPort.wsdl" />
+  <wsdl:types />
+  <wsdl:binding name="AisgPortImplServiceSoapBinding" type="ns1:AisgPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ZmenitUdajeOsoby">
+      <soap:operation soapAction="ZmenitUdajeOsoby" style="document" />
+      <wsdl:input name="ZmenitUdajeOsoby">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ZmenitUdajeOsobyResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessage">
+        <soap:fault use="literal" name="ErrorMessage" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="OveritOsobyHromadne">
+      <soap:operation soapAction="OveritOsobyHromadne" style="document" />
+      <wsdl:input name="OveritOsobyHromadne">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="OveritOsobyHromadneResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessage">
+        <soap:fault use="literal" name="ErrorMessage" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ZiskatVysledkyOveritOsobyHromadne">
+      <soap:operation soapAction="ZiskatVysledkyOveritOsobyHromadne" style="document" />
+      <wsdl:input name="ZiskatVysledkyOveritOsobyHromadne">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ZiskatVysledkyOveritOsobyHromadneResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessage">
+        <soap:fault use="literal" name="ErrorMessage" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="OveritOsobu">
+      <soap:operation soapAction="OveritOsobu" style="document" />
+      <wsdl:input name="OveritOsobu">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="OveritOsobuResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessage">
+        <soap:fault use="literal" name="ErrorMessage" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="Test">
+      <soap:operation soapAction="Test" style="document" />
+      <wsdl:input name="Test">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="TestResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ErrorMessage">
+        <soap:fault use="literal" name="ErrorMessage" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AisgPortImplService">
+    <wsdl:port name="AisgPortImplPort" binding="tns:AisgPortImplServiceSoapBinding">
+      <soap:address location="https://aisgsprtst01.cca.cz:9401/rovo/v1" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
